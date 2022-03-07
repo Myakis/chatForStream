@@ -1,4 +1,5 @@
 export class Question {
+  //Отправляем запрос на сервер, добавляем полученные данные в бд на сервере
   static create(question) {
     return fetch('https://app-with-questions-default-rtdb.firebaseio.com/question.json', {
       method: 'POST',
@@ -15,12 +16,14 @@ export class Question {
       .then(addToLocalStorage)
       .then(Question.renderList);
   }
+  //Выводим вопросы в чат, если они есть
   static renderList() {
     const questions = getQuestionsFromLocalStorage();
     const html = questions.length ? questions.map(toCard).join(' ') : '';
     const list = document.querySelector('.chat');
     list.innerHTML = html;
   }
+  //Проверяем наш токен в форме регистранции
   static fetch(token) {
     if (!token) {
       return Promise.resolve('<p class="error">У вас нет токена<p>');
@@ -39,6 +42,7 @@ export class Question {
           : [];
       });
   }
+  //Выводим список вопросов, если вход прошел успешно и они есть, если вопросо нет- выводим соответсвующий текст
   static listToHTML(questions) {
     return questions.length
       ? `
@@ -48,7 +52,7 @@ export class Question {
       : '<p>Вопросов нет</p>';
   }
 }
-
+//Сохраняем вопросы в localStorage
 function addToLocalStorage(question) {
   const all = getQuestionsFromLocalStorage();
 
@@ -59,6 +63,8 @@ function addToLocalStorage(question) {
 function getQuestionsFromLocalStorage() {
   return JSON.parse(localStorage.getItem('question') || '[]');
 }
+
+//Создаем обертку для ввывода вопрса в чат
 function toCard(question) {
   return `
   <div class="chat__question-block">

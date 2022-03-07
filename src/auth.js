@@ -1,3 +1,4 @@
+//Генерируем форму входа
 export function getAuthForm() {
   return `
     <form action="#" id="auth-form">
@@ -13,6 +14,8 @@ export function getAuthForm() {
     </form>
   `;
 }
+
+//Получаем с сервера наш токен и возращаем его
 
 export function authWithEmailAndPassword(email, password) {
   const apiKey = 'AIzaSyAFMv6iwAwxe0Cc7wNeK4BXceOkDHTa2VU';

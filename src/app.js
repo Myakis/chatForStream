@@ -7,12 +7,15 @@ const textarea = form.querySelector('textarea');
 const chatBtn = form.querySelector('button');
 const modalBtn = document.querySelector('.log-in');
 const modal = document.querySelector('.modal');
+//Генерируем вопросы при загрузке страницы
 window.addEventListener('load', Question.renderList);
+
 form.addEventListener('submit', submitFormHandler);
+//Блокируем кнопку, если введенный текст не удовлетворяет условию, прописанному в isVaid
 textarea.addEventListener('input', () => {
   chatBtn.disabled = !isVaid(textarea.value);
 });
-
+//Проверяем на валидность, отправляем данные на сервер, удалям введенное сообщение
 function submitFormHandler(e) {
   e.preventDefault();
   if (isVaid(textarea.value)) {
@@ -30,6 +33,7 @@ function submitFormHandler(e) {
 
 modalBtn.addEventListener('click', openModal);
 
+//Получаем данные с введенного поля в форме, отправляем на сервер для проверки авторизации
 function authFormHandler(e) {
   e.preventDefault();
   const email = e.target.querySelector('#auth-input').value;
@@ -43,8 +47,9 @@ function authFormHandler(e) {
       btn.disabled = false;
     });
 }
-
+//Генерируем контент модального окна на основе полученного ответа с сервера
 function renderModalAfterAuth(content) {
+  //Должны получить массив с вопросами, если это строка, то была допущена ошибка
   if (typeof content === 'string') {
     createModal('Ошибка', content);
   } else {
@@ -52,6 +57,8 @@ function renderModalAfterAuth(content) {
   }
   removeClassForModal();
 }
+
+//Открывает модальное окно и создает его конетнт
 function openModal() {
   createModal('Авторизация', getAuthForm());
   removeClassForModal();

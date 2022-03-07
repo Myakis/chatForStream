@@ -1,6 +1,9 @@
+//проверка на количество введенных символов
 export function isVaid(value) {
   return value.length >= 10;
 }
+
+//Создаение модального окна на основе текста и внутреннего конетнта
 export function createModal(title, content) {
   const modal = document.createElement('div');
   document.body.append(modal);
@@ -18,6 +21,7 @@ export function createModal(title, content) {
   document.body.append(modal);
 }
 
+//Удаляем класс у формы, чтобы ее скрыть
 export function removeClassForModal() {
   document.querySelector('.modal').addEventListener('click', e => {
     if (!e.target.closest('.modal-window') || e.target.closest('.close')) {
