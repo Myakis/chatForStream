@@ -121,3 +121,134 @@ aside {
 ::-webkit-scrollbar-thumb:hover {
   background-color: rgba(92, 25, 25, 1);
 }
+
+.log-in {
+  position: fixed;
+  left: 30px;
+  bottom: 50px;
+  height: 70px;
+  width: 70px;
+  border-radius: 100%;
+  background: rgb(82, 14, 128);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.modal-overlay {
+  background: #625f636c;
+  position: fixed;
+  opacity: 0;
+  visibility: hidden;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  transition: all 0.3s ease 0.3s;
+}
+
+.modal-window {
+  transform: translate(-50%, -50%);
+  left: 50%;
+  right: 0;
+  top: -1000%;
+  bottom: 0;
+  position: fixed;
+  z-index: 5;
+  min-height: 500px;
+  width: 800px;
+  border-radius: 50px;
+  background: wheat;
+  transition: all 0.4s ease 0.3s;
+}
+
+.modal.modal-open .modal-window {
+  top: 50%;
+}
+.modal.modal-open .modal-overlay {
+  opacity: 1;
+  visibility: visible;
+}
+.modal.modal-open {
+  opacity: 1;
+}
+.modal-window .close {
+  position: absolute;
+  right: 33px;
+  top: 6px;
+  font-size: 33px;
+  cursor: pointer;
+  transition: all 0.3s ease 0s;
+}
+.modal-window .close:hover {
+  align-items: flex-start;
+  transform: rotate(180deg);
+  color: #2c1338;
+}
+.modal h3 {
+  text-align: center;
+  font-size: 40px;
+}
+.modal ol {
+  margin-left: 20px;
+  font-size: 20px;
+}
+.modal p {
+  font-size: 20px;
+  text-align: center;
+}
+.error {
+  color: red;
+}
+#auth-form {
+  margin: 0 auto;
+  width: 400px;
+}
+.form-label {
+  margin-bottom: 50px;
+}
+.form-label label {
+  font-size: 20px;
+  display: block;
+  margin-bottom: 5px;
+}
+.form-label input {
+  display: block;
+  border: 0;
+  border-bottom: 1px solid rgb(172, 156, 127);
+  outline: none;
+  background: none;
+  padding: 0.5em;
+  width: 100%;
+  font-size: 20px;
+}
+#auth-form button {
+  outline: none;
+  padding: 0.5em 1em;
+  font-size: 20px;
+  max-width: 200px;
+  width: 100%;
+  margin: 20px 15px 0 auto;
+
+  display: block;
+  outline: none;
+  border: 0;
+  background: rgba(92, 25, 25, 0.699);
+  border-radius: 15px;
+  box-shadow: 3px 4px 3px 0px #000000a6;
+  transition: background 0.2s ease, transform 0.08s ease-in-out, box-shadow 0.08s ease-in-out;
+}
+
+#auth-form button:hover {
+  background: rgba(92, 25, 25, 1);
+}
+#auth-form button:active {
+  transform: translate(1px, 5px);
+  box-shadow: 0 0 0 0px #000000a6;
+}
+#auth-form button:disabled {
+  background: rgba(128, 125, 125, 0.8);
+}
