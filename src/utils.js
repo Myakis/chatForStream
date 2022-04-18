@@ -1,6 +1,6 @@
 //проверка на количество введенных символов
 export function isVaid(value) {
-  return value.length >= 10;
+  return value.length >= 5;
 }
 
 //Создаение модального окна на основе текста и внутреннего конетнта
